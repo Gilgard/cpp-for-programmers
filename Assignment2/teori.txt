@@ -1,0 +1,5 @@
+Oppgave 2
+	Segmentation fault på grunn av at variablen som er satt av er en nullptr pointer som er en ikke-addresse.
+
+Oppgave 3
+	Hvis det ikke er "e" i ordet som brukeren skriver så vil loopen kjøre til programmet støter på segmentation fault på grunn av at pointeren havner utenfor stacken. Dette er fordi c++ ikke har definisjon for index out of bounds så når pointeren går utenfor ordet fortsetter den bare å itterere over alle addressene i stacken.
