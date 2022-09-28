@@ -4,23 +4,7 @@
 
 using namespace std;
 
-void read_temperatures(double temperatures[], int length) {
-    const char filename[] = "temperatures.txt";
-    ifstream file;
-    file.open(filename);
-    if (!file) {
-        cout << "Feil ved åpning av innfil." << endl;
-        exit(EXIT_FAILURE);
-    }
-
-    double number;
-    for (int j = 0; j < length; j++) {
-        file >> number;
-        temperatures[j] = number;
-    }
-
-    file.close();
-}
+void read_temperatures(double temperatures[], int length);
 
 int main() {
     double temperatures[5] = {};
@@ -43,3 +27,21 @@ int main() {
     cout << "Antall mellom 10 og 20 er " << between << endl;
     cout << "Antall over 20 er " << greater << endl;
 }
+
+void read_temperatures(double temperatures[], int length) {
+        const char filename[] = "temperatures.txt";
+        ifstream file;
+        file.open(filename);
+        if (!file) {
+            cout << "Feil ved åpning av innfil." << endl;
+            exit(EXIT_FAILURE);
+        }
+
+        double number;
+        for (int j = 0; j < length; j++) {
+            file >> number;
+            temperatures[j] = number;
+        }
+
+        file.close();
+    }
