@@ -1,7 +1,3 @@
-#ifndef OVING7_FRACTION_H
-#define OVING7_FRACTION_H
-
-
 #pragma once
 
 class Fraction {
@@ -37,4 +33,3 @@ private:
     int compare(const Fraction &other) const;
 };
 Fraction operator-(int integer, const Fraction &other);
-#endif //OVING7_FRACTION_H
