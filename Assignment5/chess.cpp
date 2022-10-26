@@ -23,6 +23,9 @@ public:
         return "black";
     }
 
+    /// Returns the proper ASCII symbol for the piece and color
+    virtual std::string symbol() const = 0;
+
     /// Return color and type of the chess piece
     virtual std::string type() const = 0;
 
@@ -31,11 +34,53 @@ public:
   };
 
   class King : public Piece {
-    // missing implementations
+    public:
+    King(Color color) : Piece(color) {}
+
+    std::string symbol() const override {
+      if (color == Color::WHITE) {
+        return "♔";
+      }
+      return "♚";
+    }
+
+    std::string type() const override {
+      return Piece::color_string() + " king";
+    }
+
+    bool valid_move(int from_x, int from_y, int to_x, int to_y) const override {
+      int x_diff = abs(from_x - to_x);
+      int y_diff = abs(from_y - to_y);
+
+      // Diagonal
+      if (x_diff == y_diff) {
+        return (x_diff == 1);
+      }
+      // Orthogonal
+      return (x_diff == 1 || y_diff == 1);
+    }
   };
 
   class Knight : public Piece {
-    // missing implementations
+    public:
+      Knight(Color color) : Piece(color) {}
+
+      std::string symbol() const override {
+        if (color == Color::WHITE) {
+          return "♘";
+        }
+        return "♞";
+      }
+
+      std::string type() const override {
+        return Piece::color_string() + " knight";
+      }
+
+      bool valid_move(int from_x, int from_y, int to_x, int to_y) const override {
+        int x_diff = abs(from_x - to_x);
+        int y_diff = abs(from_y - to_y);
+        return ((x_diff == 2 && y_diff == 1) || (x_diff == 1 && y_diff == 2));
+      }
   };
 
   ChessBoard() {
@@ -82,6 +127,22 @@ public:
       cout << "no piece at " << from << endl;
       return false;
     }
+  }
+  
+  void print_board() {
+    for (size_t y = 0; y < 8; y++) {
+      cout << char('a' + y) << "|";
+      for (auto &piece : squares[y]) {
+        if (piece) {
+          cout << piece->symbol();
+        } else {
+          cout << " ";
+        }
+        cout << "|";
+      }
+      cout << endl;
+    }
+    cout << "  1 2 3 4 5 6 7 8" << endl;
   }
 };
 
