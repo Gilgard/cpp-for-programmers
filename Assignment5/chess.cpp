@@ -164,13 +164,23 @@ int main() {
   cout << endl;
 
   cout << "A simulated game:" << endl;
+  board.print_board();
   board.move_piece("e1", "e2");
+  board.print_board();
   board.move_piece("g8", "h6");
+  board.print_board();
   board.move_piece("b1", "c3");
+  board.print_board();
   board.move_piece("h6", "g8");
+  board.print_board();
   board.move_piece("c3", "d5");
+  board.print_board();
   board.move_piece("g8", "h6");
+  board.print_board();
   board.move_piece("d5", "f6");
+  board.print_board();
   board.move_piece("h6", "g8");
+  board.print_board();
   board.move_piece("f6", "e8");
+  board.print_board();
 }
